@@ -1,6 +1,8 @@
 # simple_twitter
 簡易Twitter(Java)
 
+CREATE DATABASE simple_twitter;
+
 CREATE TABLE users ( <br>
  id INTEGER AUTO_INCREMENT PRIMARY KEY,<br>
  account VARCHAR(20) UNIQUE NOT NULL,<br>
