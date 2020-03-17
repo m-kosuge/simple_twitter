@@ -68,7 +68,7 @@ public class UserDao {
 			ResultSet rs = ps.executeQuery();
 
 			List<User> users = toUsers(rs);
-			if (users.isEmpty() == true) {
+			if (users.isEmpty()) {
 				return null;
 			} else if (2 <= users.size()) {
 				throw new IllegalStateException("ユーザーが重複しています");
@@ -95,7 +95,7 @@ public class UserDao {
 			ResultSet rs = ps.executeQuery();
 
 			List<User> users = toUsers(rs);
-			if (users.isEmpty() == true) {
+			if (users.isEmpty()) {
 				return null;
 			} else if (2 <= users.size()) {
 				throw new IllegalStateException("ユーザーが重複しています");
