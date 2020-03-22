@@ -17,11 +17,11 @@ public class UserService {
 		try {
 			connection = getConnection();
 
+			// パスワード暗号化
 			String encPassword = CipherUtil.encrypt(user.getPassword());
 			user.setPassword(encPassword);
 
 			new UserDao().insert(connection, user);
-
 			commit(connection);
 		} catch (RuntimeException e) {
 			rollback(connection);
@@ -40,10 +40,10 @@ public class UserService {
 		try {
 			connection = getConnection();
 
+			// パスワード暗号化
 			String encPassword = CipherUtil.encrypt(password);
 
 			User user = new UserDao().select(connection, accountOrEmail, encPassword);
-
 			commit(connection);
 
 			return user;
@@ -65,7 +65,6 @@ public class UserService {
 			connection = getConnection();
 
 			User user = new UserDao().select(connection, userId);
-
 			commit(connection);
 
 			return user;
@@ -86,11 +85,11 @@ public class UserService {
 		try {
 			connection = getConnection();
 
+			// パスワード暗号化
 			String encPassword = CipherUtil.encrypt(user.getPassword());
 			user.setPassword(encPassword);
 
 			new UserDao().update(connection, user);
-
 			commit(connection);
 		} catch (RuntimeException e) {
 			rollback(connection);

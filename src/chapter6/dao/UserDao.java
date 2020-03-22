@@ -29,13 +29,13 @@ public class UserDao {
 			sql.append("	created_date, ");
 			sql.append("	updated_date ");
 			sql.append(") VALUES ( ");
-			sql.append("	?, ");					// account
-			sql.append("	?, ");					// name
-			sql.append("	?, ");					// email
-			sql.append("	?, ");					// password
-			sql.append("	?, ");					// description
+			sql.append("	?, ");									// account
+			sql.append("	?, ");									// name
+			sql.append("	?, ");									// email
+			sql.append("	?, ");									// password
+			sql.append("	?, ");									// description
 			sql.append("	CURRENT_TIMESTAMP, ");	// created_date
-			sql.append("	CURRENT_TIMESTAMP ");	// updated_date
+			sql.append("	CURRENT_TIMESTAMP ");		// updated_date
 			sql.append(")");
 
 			ps = connection.prepareStatement(sql.toString());

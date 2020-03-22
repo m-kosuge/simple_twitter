@@ -20,7 +20,6 @@ public class MessageService {
 			connection = getConnection();
 
 			new MessageDao().insert(connection, message);
-
 			commit(connection);
 		} catch (RuntimeException e) {
 			rollback(connection);
@@ -41,7 +40,6 @@ public class MessageService {
 			connection = getConnection();
 
 			List<UserMessage> messages = new UserMessageDao().select(connection, LIMIT_NUM);
-
 			commit(connection);
 
 			return messages;
