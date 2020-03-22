@@ -18,7 +18,6 @@ public class MessageService {
 		Connection connection = null;
 		try {
 			connection = getConnection();
-
 			new MessageDao().insert(connection, message);
 			commit(connection);
 		} catch (RuntimeException e) {
@@ -38,7 +37,6 @@ public class MessageService {
 		Connection connection = null;
 		try {
 			connection = getConnection();
-
 			List<UserMessage> messages = new UserMessageDao().select(connection, LIMIT_NUM);
 			commit(connection);
 
