@@ -20,20 +20,16 @@ public class TopServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
+		boolean isShowMessageForm = false;
 		User user = (User) request.getSession().getAttribute("loginUser");
-
-		boolean isShowMessageForm;
 		if (user != null) {
 			isShowMessageForm = true;
-		} else {
-			isShowMessageForm = false;
 		}
 
 		List<UserMessage> messages = new MessageService().select();
 
 		request.setAttribute("messages", messages);
 		request.setAttribute("isShowMessageForm", isShowMessageForm);
-
 		request.getRequestDispatcher("/top.jsp").forward(request, response);
 	}
 }

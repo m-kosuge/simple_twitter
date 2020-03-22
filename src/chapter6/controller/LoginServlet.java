@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		User user = new UserService().select(accountOrEmail, password);
-
 		if (user == null) {
 			List<String> errorMessages = new ArrayList<String>();
 			errorMessages.add("ログインに失敗しました");
@@ -43,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", user);
-
 		response.sendRedirect("./");
-    }
+  }
 }

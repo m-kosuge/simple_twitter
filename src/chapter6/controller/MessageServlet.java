@@ -27,14 +27,15 @@ public class MessageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		List<String> errorMessages = new ArrayList<String>();
 
-		Message message = new Message();
-		message.setText(request.getParameter("message"));
-
-		if (!isValid(message.getText(), errorMessages)) {
+		String text = request.getParameter("text");
+		if (!isValid(text, errorMessages)) {
 			session.setAttribute("errorMessages", errorMessages);
 			response.sendRedirect("./");
 			return;
 		}
+
+		Message message = new Message();
+		message.setText(text);
 
 		User user = (User) session.getAttribute("loginUser");
 		message.setUserId(user.getId());
@@ -54,8 +55,7 @@ public class MessageServlet extends HttpServlet {
 
 		if (errorMessages.size() == 0) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 }

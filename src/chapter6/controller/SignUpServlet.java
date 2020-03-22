@@ -32,7 +32,6 @@ public class SignUpServlet extends HttpServlet {
 		List<String> errorMessages = new ArrayList<String>();
 
 		User user = getUser(request);
-
 		if (!isValid(user, errorMessages)) {
 			request.setAttribute("errorMessages", errorMessages);
 			request.getRequestDispatcher("signup.jsp").forward(request, response);
@@ -57,7 +56,7 @@ public class SignUpServlet extends HttpServlet {
 
 	private boolean isValid(User user, List<String> errorMessages) {
 
-    	String name = user.getName();
+    String name = user.getName();
 		String account = user.getAccount();
 		String password = user.getPassword();
 		String email = user.getEmail();
@@ -79,8 +78,7 @@ public class SignUpServlet extends HttpServlet {
 
 		if (errorMessages.size() == 0) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 }

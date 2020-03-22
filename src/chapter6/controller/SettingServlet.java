@@ -28,8 +28,8 @@ public class SettingServlet extends HttpServlet {
 		User loginUser = (User) session.getAttribute("loginUser");
 
 		User user = new UserService().select(loginUser.getId());
-		request.setAttribute("user", user);
 
+		request.setAttribute("user", user);
 		request.getRequestDispatcher("setting.jsp").forward(request, response);
 	}
 
@@ -41,7 +41,6 @@ public class SettingServlet extends HttpServlet {
 		List<String> errorMessages = new ArrayList<String>();
 
 		User user = getUser(request);
-
 		if (isValid(user, errorMessages)) {
 			try {
 				new UserService().update(user);
@@ -58,7 +57,6 @@ public class SettingServlet extends HttpServlet {
 		}
 
 		session.setAttribute("loginUser", user);
-
 		response.sendRedirect("./");
 	}
 
@@ -99,8 +97,7 @@ public class SettingServlet extends HttpServlet {
 
 		if (errorMessages.size() == 0) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 }
