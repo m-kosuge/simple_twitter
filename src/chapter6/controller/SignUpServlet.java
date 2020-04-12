@@ -39,7 +39,6 @@ public class SignUpServlet extends HttpServlet {
 		}
 
 		new UserService().insert(user);
-
 		response.sendRedirect("./");
 	}
 
@@ -76,9 +75,9 @@ public class SignUpServlet extends HttpServlet {
 			errorMessages.add("メールアドレスは50文字以下で入力してください");
 		}
 
-		if (errorMessages.size() == 0) {
-			return true;
+		if (errorMessages.size() != 0) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 }

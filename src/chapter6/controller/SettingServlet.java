@@ -72,7 +72,6 @@ public class SettingServlet extends HttpServlet {
 		return user;
 	}
 
-
 	private boolean isValid(User user, List<String> errorMessages) {
 
 		String name = user.getName();
@@ -95,9 +94,9 @@ public class SettingServlet extends HttpServlet {
 			errorMessages.add("メールアドレスは50文字以下で入力してください");
 		}
 
-		if (errorMessages.size() == 0) {
-			return true;
+		if (errorMessages.size() != 0) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 }

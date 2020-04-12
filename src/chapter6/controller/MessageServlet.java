@@ -41,7 +41,6 @@ public class MessageServlet extends HttpServlet {
 		message.setUserId(user.getId());
 
 		new MessageService().insert(message);
-
 		response.sendRedirect("./");
 	}
 
@@ -53,9 +52,9 @@ public class MessageServlet extends HttpServlet {
 			errorMessages.add("140文字以下で入力してください");
 		}
 
-		if (errorMessages.size() == 0) {
-			return true;
+		if (errorMessages.size() != 0) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 }
